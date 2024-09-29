@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* You can customize this */
+  background-color: #f0f0f0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+
+/* globals.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* You can customize this */
+  background-color: #f0f0f0; /* Background color for the body */
+}
+
+header {
+  backdrop-filter: blur(10px); /* Creates the glass effect for the header */
+}
+
+header .logo {
+  font-size: 1.5rem; /* Adjust logo size */
+  font-weight: bold; /* Make logo bold */
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly transparent border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 8px 16px; /* Padding for the buttons */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline for links */
+  transition: background 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+
+
