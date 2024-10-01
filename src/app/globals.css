@@ -3,45 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000; /* Set background to black */
+  --foreground: #ffffff; /* Set foreground to white for contrast */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif; /* You can customize this */
-  background-color: #f0f0f0;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease;
-}
-
-
-/* globals.css */
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif; /* You can customize this */
-  background-color: #f0f0f0; /* Background color for the body */
+  font-family: 'Poppins', sans-serif; /* Use a more attractive font */
+  background-color: black; /* Use the black background */
+  color: var(--foreground); /* Ensure text is readable on black background */
 }
 
 header {
-  backdrop-filter: blur(10px); /* Creates the glass effect for the header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 5px;
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure the header stays on top */
 }
 
 header .logo {
@@ -49,20 +37,122 @@ header .logo {
   font-weight: bold; /* Make logo bold */
 }
 
-.glass-button {
-  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly transparent border */
-  border-radius: 10px; /* Rounded corners */
-  padding: 8px 16px; /* Padding for the buttons */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline for links */
-  transition: background 0.3s, transform 0.3s; /* Smooth transition */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  
+  border-radius: 50px;
+  padding: 10px 20px;
+  background-color: #155ab6; /* Make the background translucent */
 }
 
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
-  transform: scale(1.05); /* Scale effect on hover */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
+li {
+  display: inline;
+}
 
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, text-decoration 0.5s ease-in-out;
+}
 
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #155ab6;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-button:hover {
+  background-color: #155ab6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  background-color: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(5px);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(52, 193, 240, 0.8);
+  transform: translateY(-8px);
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Responsive Navbar */
+.hamburger-menu {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1e3a8a; /* Tailwind's blue-800 */
+    z-index: 1000;
+  }
+
+  nav ul li {
+    display: block;
+    text-align: center;
+  }
+
+  .nav-button {
+    display: block;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
